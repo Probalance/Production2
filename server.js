@@ -1,4 +1,4 @@
-var sendgrid_password   = process.env.SENDGRID_PASSWORD;
+var sendgrid_password   = process.env.SENDGRID_API_KEY;
 
 import { setApiKey, Email, send } from '@sendgrid/mail';
 setApiKey(sendgrid_password);
