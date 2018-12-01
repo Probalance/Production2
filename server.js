@@ -1,7 +1,7 @@
-var sendgrid_password   = process.env.SENDGRID_API_KEY;
+var sendgrid_API_KEY   = process.env.SENDGRID_API_KEY;
 
 import { setApiKey, Email, send } from '@sendgrid/mail';
-setApiKey(sendgrid_password);
+setApiKey(sendgrid_API_KEY);
 var email      = new Email();
 
 var app = express();
@@ -9,7 +9,7 @@ app.use(bodyParser.json()); //needed for req.body
 app.set('port', process.env.PORT || 3000);
 app.use(express.static(__dirname));
 
-app.post('/email', function(req, res) {
+app.post('https://api.sendgrid.com/v3/mail/send', function(req, res) {
     email.addTo(req.body.to);
     email.setFrom(req.body.from);
     email.setSubject(req.body.subject);
